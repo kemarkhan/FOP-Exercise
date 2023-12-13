@@ -1,0 +1,82 @@
+package Viva2;
+
+/**
+ *
+ * @author akmalhariz
+ */
+public class VivaQ3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        //Sample input arrays
+        String []input1 = {"0","a",".","-5E7","2e+8","2e2e"};
+        String []input2 = {"2e","1a","11e2.5","-3","+3","+-3"};
+        
+        //Call the checkNumericalValidity method for each input and store results
+        boolean []output1 = checkNumericalValidity(input1);
+        boolean []output2 = checkNumericalValidity(input2);
+        
+        //Print results for both input
+        printResults(input1,output1);
+        printResults(input2,output2);
+    }
+    //Method to check the validity of numerical values
+    public static boolean [] checkNumericalValidity(String[]input){
+        //Create a boolean array to store results
+        boolean []result = new boolean [input.length];
+        
+        //Iterate through each string in input array
+        for (int i = 0; i < input.length; i++) {
+            //Call the isNumeric method to check if the string is numeric
+            result[i] = isNumeric(input[i]);
+            
+        }
+        return result ;
+    }
+    //Method to check if a string represents a numeric value
+    private static boolean isNumeric (String str){
+        try {
+            //Attempt to parse the string as a double
+            Double.parseDouble(str);
+            //If parsing is successful, return true
+            return true ;
+        }catch (NumberFormatException e){
+            //If an exception occurs, return false
+            return false ;
+        }
+    }
+    //Method to print the input values and corresponding output
+    private static void printResults (String[]input, boolean []output){
+        //Print the sample input values
+        System.out.println("Sample input : ");
+        printArray(input);
+        
+        //Print the sample output values
+        System.out.println("Sample output : ");
+        printArray(output);
+        System.out.println();
+    }
+    //Method to print an array of strings
+    private static void printArray(String []arr){
+        //Iterate through the array and print each element
+        for(String value : arr){
+            System.out.print(value+", ");
+        }
+        //Move to the next line after printing the array
+        System.out.println();
+    }
+    //Method ro print an array of booelans
+    private static void printArray(boolean []arr){
+        //Iterate through the array and print each boolean value 
+        for (boolean value : arr){
+            System.out.print(value+", ");
+        }
+        //Move the the next line after printing the array
+        System.out.println();
+    }
+    
+    }
+    
+
